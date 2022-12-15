@@ -8,10 +8,16 @@ html {
 body {
     margin: 0;
     font-size: 18px;
+    font-family: 'Roboto', sans-serif;
 }
 
 main {
-    display: block;
+    display: flex;
+}
+
+footer {
+    text-align: center;
+    margin: 75px 0px;
 }
 
 h1 {
@@ -28,4 +34,19 @@ h3 {
 
 p {
     font-size: 1em;
+}
+
+/* Special */
+
+#headshot {
+    margin: 30px 50px 10px 30px;
+}
+
+#left-links {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#main-title {
+    text-align: center;
 }
