@@ -38,8 +38,13 @@ p {
 
 /* Special */
 
+#page-left {
+    margin: 30px 50px 0px 30px;
+}
+
 #headshot {
-    margin: 30px 50px 10px 30px;
+    margin: 0px 0px 10px 0px;
+    max-width: 175px;
 }
 
 #left-links {
