@@ -11,10 +11,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-main {
-    display: flex;
-}
-
 footer {
     text-align: center;
     margin: 75px 0px;
@@ -42,8 +38,12 @@ p {
     margin: 30px 50px 0px 30px;
 }
 
+#page-right {
+    margin-right: 50px;
+}
+
 #headshot {
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 10px;
     max-width: 250px;
 }
 
@@ -54,4 +54,31 @@ p {
 
 #main-title {
     text-align: center;
+}
+
+/* Responsiveness */
+
+@media screen and (min-width: 900px) {
+    main {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    #page-right {
+        margin-left: 50px;
+    }
+    
+    #headshot {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #page-right {
+        margin: 20px;
+    }
 }
