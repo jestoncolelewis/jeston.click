@@ -45,6 +45,7 @@ p {
 #headshot {
     margin: 0px 0px 10px;
     max-width: 250px;
+    border-radius: 50%;
 }
 
 #left-links {
