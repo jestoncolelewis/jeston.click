@@ -32,6 +32,11 @@ p {
     font-size: 1em;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(73, 73, 73);
+}
+
 /* Special */
 
 #page-left {
@@ -49,7 +54,9 @@ p {
 }
 
 #left-links {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 1.3em;
 }
 
