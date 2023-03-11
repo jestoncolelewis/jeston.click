@@ -2,31 +2,31 @@ import boto3
 
 # resources to setup
 dynamodb = boto3.client('dynamodb')
+lamb = boto3.client('lambda')
 
-table = dynamodb.create_table(
-    TableName = 'page_views',
-    KeySchema = [
-        {
-            'AttributeName': 'view_num',
-            'KeyType': 'HASH'
-        },
-        {
-            'AttributeName': 'date_time',
-            'KeyType': 'RANGE'
-        },
-    ],
-    AttributeDefinitions = [
-        {
-            'AttributeName': 'view_num',
-            'AttributeType': 'N'
-        },
-        {
-            'AttributeName': 'date_time',
-            'AttributeType': 'N'
-        },
-    ],
-    ProvisionedThroughput = {
-        'ReadCapacityUnits': 5,
-        'WriteCapacityUnits': 5
-    }
-)
+# build table
+def build_dynamo(name, keys, attdef):
+    dynamodb.create_table(
+        TableName = name,
+        KeySchema = [keys],
+        AttributeDefinitions = [attdef],
+        ProvisionedThroughput = {
+            'ReadCapacityUnits': 5,
+            'WriteCapacityUnits': 5
+        }
+    )
+
+# build function
+def build_lambda(name, lang, role, code):
+    lamb.create_function(
+        FunctionName = name,
+        Runtime = lang,
+        Role = role,
+        Code = {
+            'ZipFile': code[0],
+            'S3Bucket': code[1],
+            'S3Key': code[2],
+            'S3ObjectVersion': code[3],
+            'ImageUri': code[4]
+        }
+    )
