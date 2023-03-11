@@ -8,8 +8,8 @@ lamb = boto3.client('lambda')
 def build_dynamo(name, keys, attdef):
     dynamodb.create_table(
         TableName = name,
-        KeySchema = [keys],
-        AttributeDefinitions = [attdef],
+        KeySchema = keys,
+        AttributeDefinitions = attdef,
         ProvisionedThroughput = {
             'ReadCapacityUnits': 5,
             'WriteCapacityUnits': 5
