@@ -1,8 +1,20 @@
 import boto3
 
 # resources to setup
+s3 = boto3.client('s3')
 dynamodb = boto3.client('dynamodb')
 lamb = boto3.client('lambda')
+
+# create bucket
+def build_bucket(name, path, file):
+    s3.create_bucket(
+        Bucket = name
+    )
+    s3.meta.client.upload_file(path, name, file)
+    response = s3.list_objects(Bucket = name)
+    objects = list(response.items())
+    file = objects[3][1][0].get('Key')
+    return file
 
 # build table
 def build_dynamo(name, keys, attdef):
@@ -23,10 +35,7 @@ def build_lambda(name, lang, role, code):
         Runtime = lang,
         Role = role,
         Code = {
-            'ZipFile': code[0],
-            'S3Bucket': code[1],
-            'S3Key': code[2],
-            'S3ObjectVersion': code[3],
-            'ImageUri': code[4]
+            'S3Bucket': code[0],
+            'S3Key': code[1]
         }
     )
