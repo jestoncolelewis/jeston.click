@@ -16,18 +16,6 @@ fetch(url)
     footer.append(count_title);
     footer.append(count_element);
     
-    // detect new page visitor & update locally
-    let new_count = Math.floor(data) + 1;
-    
     // put new page count to db
-    /* fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'applications/json'
-        },
-        body: new_count
-    }); */
+    fetch(url, {method: 'PUT'});
 });
