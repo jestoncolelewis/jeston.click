@@ -2,7 +2,7 @@
 const footer = document.querySelector('footer');
 const count_element = document.createElement('p');
 const count_title = document.createElement('p')
-const url = 'https://0cxjlr27zj.execute-api.us-west-2.amazonaws.com/my-function'
+const url = 'https://0cxjlr27zj.execute-api.us-west-2.amazonaws.com/items'
 
 // get page count from db
 fetch(url)
@@ -15,7 +15,10 @@ fetch(url)
     count_element.style.textAlign = 'center';
     footer.append(count_title);
     footer.append(count_element);
-    
-    // put new page count to db
-    fetch(url, {method: 'PUT'});
+    console.log(data);
 });
+
+// put new page count to db
+fetch(url, {method: 'PUT'})
+.then((response) => response.text())
+.then((data) => {console.log(data);})
