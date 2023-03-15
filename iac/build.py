@@ -1,32 +1,34 @@
 from functions import *
 import os
 
-name = 'page_views'
+name = 'jeston.click-page-views'
 
 # s3 variables
 path = os.getcwd()
 
 file = 'index.zip'
 
+path = path + '/' + file
+
 # dynamo variables
 keys = [
     {
-        'AttributeName': 'view_num',
+        'AttributeName': 'view-num',
         'KeyType': 'HASH'
     },
     {
-        'AttributeName': 'date_time',
+        'AttributeName': 'date-time',
         'KeyType': 'RANGE'
     },
 ]
 
 attributes = [
     {
-        'AttributeName': 'view_num',
+        'AttributeName': 'view-num',
         'AttributeType': 'N'
     },
     {
-        'AttributeName': 'date_time',
+        'AttributeName': 'date-time',
         'AttributeType': 'N'
     },
 ]
