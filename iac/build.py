@@ -36,7 +36,7 @@ key = build_bucket(name, path, file)
 # lambda variables
 lang = 'python3.9'
 
-iam = ''
+iam = 'arn:aws:iam::706391136734:role/service-role/microRole'
 
 code = [name, key]
 
