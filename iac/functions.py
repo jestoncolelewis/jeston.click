@@ -2,15 +2,19 @@ import boto3
 
 # resources to setup
 s3 = boto3.client('s3')
+s3r = boto3.resource('s3')
 dynamodb = boto3.client('dynamodb')
 lamb = boto3.client('lambda')
 
 # create bucket
 def build_bucket(name, path, file):
     s3.create_bucket(
-        Bucket = name
+        Bucket = name,
+        CreateBucketConfiguration = {
+            'LocationConstraint': 'us-west-2'
+        }
     )
-    s3.meta.client.upload_file(path, name, file)
+    s3r.meta.client.upload_file(path, name, file)
     response = s3.list_objects(Bucket = name)
     objects = list(response.items())
     file = objects[3][1][0].get('Key')
