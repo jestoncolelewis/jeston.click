@@ -35,12 +35,12 @@ def build_dynamo(name, keys, attdef):
 # build function
 def build_lambda(name, lang, role, code, desc):
     lamb.create_function(
-        FunctionName = name,
         Runtime = lang,
         Role = role,
         Code = {
             'S3Bucket': code[0],
             'S3Key': code[1]
         },
-        Description = desc
+        Description = desc,
+        FunctionName = name
     )

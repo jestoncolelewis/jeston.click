@@ -1,7 +1,7 @@
 from functions import *
 import os
 
-name = 'jeston.click-page-views'
+name = 'jestondotclick-page-views'
 
 # s3 variables
 path = os.getcwd()
