@@ -1,10 +1,15 @@
 import boto3
+import datetime
 import json
 
 dynamodb = boto3.client("dynamodb")
 table = dynamodb.Table("page_views")
 
-Key = {"view_num": "", "date_time": ""}
+now = datetime.datetime.now()
+now = f'{now}'
+
+# how do I get the latest item?
+Key = {"date-time": now}
 
 
 def lambda_handler(event, context):
@@ -16,5 +21,7 @@ def lambda_handler(event, context):
         response = table.update_item(
             Key,
             UpdateExpression="SET view_num = :vall",
-            ExpressionAttributeValues={":vall": item},
+            # need to figure out what value to add
+            ExpressionAttributeValues={":vall": ''},
         )
+        return response
