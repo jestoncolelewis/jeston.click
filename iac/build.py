@@ -13,14 +13,14 @@ path = path + '/' + file
 # dynamo variables
 keys = [
     {
-        'AttributeName': 'view-num',
+        'AttributeName': 'date-time',
         'KeyType': 'HASH'
     }
 ]
 
 attributes = [
     {
-        'AttributeName': 'view-num',
+        'AttributeName': 'date-time',
         'AttributeType': 'N'
     }
 ]
