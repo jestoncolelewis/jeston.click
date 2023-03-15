@@ -42,5 +42,6 @@ def build_lambda(name, lang, role, code, desc):
             'S3Key': code[1]
         },
         Description = desc,
-        FunctionName = name
+        FunctionName = name,
+        Handler = 'index.lambda_handler'
     )
