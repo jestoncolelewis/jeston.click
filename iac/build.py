@@ -42,6 +42,8 @@ iam = 'arn:aws:iam::706391136734:role/service-role/microRole'
 
 code = [name, key]
 
+description = 'function for retrieving and updating page views'
+
 
 build_dynamo(name, keys, attributes)
-build_lambda(name, lang, iam, code)
+build_lambda(name, lang, iam, code, description)
