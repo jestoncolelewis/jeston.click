@@ -15,22 +15,14 @@ keys = [
     {
         'AttributeName': 'view-num',
         'KeyType': 'HASH'
-    },
-    {
-        'AttributeName': 'date-time',
-        'KeyType': 'RANGE'
-    },
+    }
 ]
 
 attributes = [
     {
         'AttributeName': 'view-num',
         'AttributeType': 'N'
-    },
-    {
-        'AttributeName': 'date-time',
-        'AttributeType': 'N'
-    },
+    }
 ]
 
 key = build_bucket(name, path, file)
