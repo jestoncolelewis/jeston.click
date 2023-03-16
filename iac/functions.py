@@ -35,7 +35,7 @@ def build_dynamo(name, keys, attdef):
 
 # build function
 def build_lambda(name, lang, role, code, desc):
-    lamb.create_function(
+    response = lamb.create_function(
         Runtime = lang,
         Role = role,
         Code = {
@@ -46,6 +46,7 @@ def build_lambda(name, lang, role, code, desc):
         FunctionName = name,
         Handler = 'index.lambda_handler'
     )
+    return response.get('FunctionArn')
 
 # build api
 def build_api(name, target):
