@@ -38,4 +38,5 @@ description = 'function for retrieving and updating page views'
 
 
 build_dynamo(name, keys, attributes)
-build_lambda(name, lang, iam, code, description)
+target = build_lambda(name, lang, iam, code, description)
+build_api(name, target)
