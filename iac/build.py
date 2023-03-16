@@ -1,40 +1,30 @@
 from functions import *
 import os
 
-name = 'jestondotclick-page-views'
+name = "jestondotclick-page-views"
 
 # s3 variables
 path = os.getcwd()
 
-file = 'index.zip'
+file = "index.zip"
 
-path = path + '/' + file
+path = path + "/" + file
 
 # dynamo variables
-keys = [
-    {
-        'AttributeName': 'date-time',
-        'KeyType': 'HASH'
-    }
-]
+keys = [{"AttributeName": "date-time", "KeyType": "HASH"}]
 
-attributes = [
-    {
-        'AttributeName': 'date-time',
-        'AttributeType': 'N'
-    }
-]
+attributes = [{"AttributeName": "date-time", "AttributeType": "N"}]
 
 key = build_bucket(name, path, file)
 
 # lambda variables
-lang = 'python3.9'
+lang = "python3.9"
 
-iam = 'arn:aws:iam::706391136734:role/service-role/microRole'
+iam = "arn:aws:iam::706391136734:role/service-role/microRole"
 
 code = [name, key]
 
-description = 'function for retrieving and updating page views'
+description = "function for retrieving and updating page views"
 
 
 build_dynamo(name, keys, attributes)
