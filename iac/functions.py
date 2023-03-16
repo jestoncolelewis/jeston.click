@@ -5,6 +5,7 @@ s3 = boto3.client('s3')
 s3r = boto3.resource('s3')
 dynamodb = boto3.client('dynamodb')
 lamb = boto3.client('lambda')
+api = boto3.client('apigatewayv2')
 
 # create bucket
 def build_bucket(name, path, file):
@@ -45,3 +46,15 @@ def build_lambda(name, lang, role, code, desc):
         FunctionName = name,
         Handler = 'index.lambda_handler'
     )
+
+# build api
+def build_api(name, target):
+    api.create_api(
+        Name = name,
+        ProtocolType = 'HTTP',
+        CorsConfiguration = {
+            'AllowOrigins': '*'
+        },
+        Target = target
+    )
+    
