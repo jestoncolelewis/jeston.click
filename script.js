@@ -2,7 +2,7 @@
 const footer = document.querySelector('footer');
 const count_element = document.createElement('p');
 const count_title = document.createElement('p')
-const url = 'https://0cxjlr27zj.execute-api.us-west-2.amazonaws.com/items'
+const url = 'https://0ny4qi6yee.execute-api.us-west-2.amazonaws.com/jestondotclick-page-views'
 
 // get page count from db
 fetch(url)
