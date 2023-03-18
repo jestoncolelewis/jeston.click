@@ -2,26 +2,39 @@ import boto3
 import datetime
 import json
 
+name = "jestondotclick-page-views"
 dynamodb = boto3.client("dynamodb")
-table = dynamodb.Table("page_views")
+dynamor = boto3.resource("dynamodb")
+table = dynamor.Table(name)
 
-now = datetime.datetime.now()
-now = f'{now}'
+now = datetime.datetime.now().timestamp()
+now = "{}".format(now)
 
 # how do I get the latest item?
-Key = {"date-time": now}
+key = {"date-time": {"N": "1679179226.926753"}}
 
 
 def lambda_handler(event, context):
     if event.get("routeKey") == "GET /items":
-        response = table.get_item(Key)
-        item = response["Item"]
-        return item
-    if event.get("routeKey") == "PUT /items":
-        response = table.update_item(
-            Key,
-            UpdateExpression="SET view_num = :vall",
-            # need to figure out what value to add
-            ExpressionAttributeValues={":vall": ''},
+        response = dynamodb.get_item(
+            TableName = name,
+            Key = key
         )
-        return response
+        view = response["Item"]['view-num']['N']
+        
+        item = int(view)
+        item += 1
+        item = "{}".format(item)
+        
+        response = dynamodb.put_item(
+            TableName = name,
+            Item = {
+                "date-time": {
+                    "N": now
+                },
+                "view-num": {
+                    "N": item
+                }
+            },
+        )
+        return view
