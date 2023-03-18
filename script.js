@@ -17,8 +17,3 @@ fetch(url)
     footer.append(count_element);
     console.log(data);
 });
-
-// put new page count to db
-fetch(url, {method: 'PUT'})
-.then((response) => response.text())
-.then((data) => {console.log(data);})
