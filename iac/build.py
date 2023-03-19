@@ -11,9 +11,9 @@ file = "index.zip"
 path = path + "/" + file
 
 # dynamo variables
-keys = [{"AttributeName": "date-time", "KeyType": "HASH"}]
+keys = [{"AttributeName": "primary-key", "KeyType": "HASH"}]
 
-attributes = [{"AttributeName": "date-time", "AttributeType": "N"}]
+attributes = [{"AttributeName": "primary-key", "AttributeType": "N"}]
 
 key = build_bucket(name, path, file)
 
