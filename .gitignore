@@ -1,0 +1,6 @@
+*test.http
+*test.ipynb
+/.ipynb_checkpoints
+/iac/__pycache__
+*index.zip
+/iac/.ipynb_checkpoints
