@@ -5,7 +5,7 @@ import json
 name = "jestondotclick-page-views"
 dynamodb = boto3.client("dynamodb")
 dynamor = boto3.resource("dynamodb")
-table = dynamor.Table(name)
+table = dynamor.Table(name) # type: ignore
 
 now = datetime.datetime.now().timestamp()
 now = "{}".format(now)

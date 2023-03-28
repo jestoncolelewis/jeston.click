@@ -17,7 +17,7 @@ def build_bucket(name, path, file):
                 'LocationConstraint': 'us-west-2'
             }
         )
-        s3r.meta.client.upload_file(path, name, file)
+        s3r.meta.client.upload_file(path, name, file) # type: ignore
     except botocore.exceptions.ClientError as err:
         print('{}'.format(err.response['Error']['Message']))
     response = s3.list_objects(Bucket = name)
