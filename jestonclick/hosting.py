@@ -1,9 +1,7 @@
 from constructs import Construct
 from aws_cdk import (
     aws_route53 as r53,
-    aws_route53_targets as targets,
-    aws_ses as ses,
-    RemovalPolicy
+    aws_route53_targets as targets
 )
 from .buckets import Buckets, name
 
@@ -39,7 +37,5 @@ class Hosting(Construct):
             zone=hosted_zone,
             record_name='www.' + name
         )
-
-        # hosted_zone.apply_removal_policy(RemovalPolicy.RETAIN)
 
         self._zone = hosted_zone
