@@ -40,12 +40,6 @@ class Hosting(Construct):
             record_name='www.' + name
         )
 
-        identity = ses.EmailIdentity(
-            self, "Identity",
-            identity=ses.Identity.public_hosted_zone(hosted_zone),
-            mail_from_domain="mail." + name
-        )
-
         # hosted_zone.apply_removal_policy(RemovalPolicy.RETAIN)
 
         self._zone = hosted_zone
