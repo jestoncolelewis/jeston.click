@@ -3,7 +3,7 @@ import os
 
 import aws_cdk as cdk
 
-from jeston.click.jeston.click_stack import JestonClickStack
+from jestonclick.jestonclick_stack import JestonClickStack
 
 
 app = cdk.App()
