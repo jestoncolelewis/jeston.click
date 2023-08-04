@@ -1,6 +1,10 @@
-*test.http
-*test.ipynb
-/.ipynb_checkpoints
-/iac/__pycache__
-*index.zip
-/iac/.ipynb_checkpoints
+*.swp
+package-lock.json
+__pycache__
+.pytest_cache
+.venv
+*.egg-info
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
