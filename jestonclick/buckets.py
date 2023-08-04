@@ -8,7 +8,7 @@ from aws_cdk import (
     RemovalPolicy
 )
 
-name = 'jestonlewiscreative.com'
+name = 'jeston.click'
 
 class Buckets(Construct):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
@@ -37,11 +37,9 @@ class Buckets(Construct):
         # Buckets
         self._main_bucket = s3.Bucket(
             self, 'MainBucket',
-            public_read_access=True,
             website_index_document='index.html',
             website_error_document='404error.html',
-            bucket_name=name,
-            block_public_access=s3.BlockPublicAccess(block_public_acls=False)
+            bucket_name=name
         )
         self._main_bucket.add_to_resource_policy(iam.PolicyStatement(
             sid="PublicReadGetObject",
