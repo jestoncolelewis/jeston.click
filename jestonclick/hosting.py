@@ -5,7 +5,7 @@ from aws_cdk import (
     aws_ses as ses,
     RemovalPolicy
 )
-from s_front_end.buckets import Buckets, name
+from .buckets import Buckets, name
 
 class Hosting(Construct):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
@@ -18,7 +18,7 @@ class Hosting(Construct):
         # Hosting
         hosted_zone = r53.HostedZone.from_hosted_zone_attributes(
             self, 'HostedZone',
-            hosted_zone_id="Z02591293JOU7GDHXDA3Y",
+            hosted_zone_id="Z0672078ZAT3W838KULA",
             zone_name=name
         )
 
