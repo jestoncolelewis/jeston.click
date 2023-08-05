@@ -1,12 +1,14 @@
 from constructs import Construct
 from aws_cdk import (
     aws_s3 as s3,
+    aws_s3_deployment as deploy,
     aws_cloudfront as cf,
     aws_cloudfront_origins as origins,
     aws_iam as iam,
     aws_certificatemanager as cm,
     RemovalPolicy
 )
+import os
 
 name = 'jeston.click'
 
@@ -39,7 +41,9 @@ class Buckets(Construct):
             self, 'MainBucket',
             website_index_document='index.html',
             website_error_document='404error.html',
-            bucket_name=name
+            bucket_name=name,
+            public_read_access=True,
+            block_public_access=s3.BlockPublicAccess(block_public_acls=False)
         )
         self._main_bucket.add_to_resource_policy(iam.PolicyStatement(
             sid="PublicReadGetObject",
@@ -48,6 +52,12 @@ class Buckets(Construct):
             actions=["s3:GetObject"],
             resources=["arn:aws:s3:::{}/*".format(name)]
             ))
+        
+        web_deploy = deploy.BucketDeployment(
+            self, "DeployWebsite",
+            sources=[deploy.Source.asset(os.path.join("./website/", "web_content.zip"))],
+            destination_bucket=self._main_bucket
+        )
 
         self._www_bucket = s3.Bucket(
             self, 'wwwBucket',
