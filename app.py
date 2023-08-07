@@ -4,9 +4,11 @@ import os
 import aws_cdk as cdk
 
 from jestonclick.jestonclick_stack import JestonClickStack
+from jestonclick.pipeline_stack import PipelineStack
 
-
+env = cdk.Environment(account="706391136734", region="us-east-1")
 app = cdk.App()
-JestonClickStack(app, "JestonClickStack", env=cdk.Environment(account="706391136734", region="us-east-1"))
+# JestonClickStack(app, "JestonClickStack", env)
+PipelineStack(app, "JestonClickWebsite", env)
 
 app.synth()
