@@ -22,7 +22,7 @@ class PipelineStack(Stack):
             "Synth",
             input=CodePipelineSource.git_hub("jestoncolelewis/{}".format(name), "main"),
             commands= [
-                "npm install 0g aws-cdk",
+                "npm install -g aws-cdk",
                 "python -m pip install -r requirements.txt",
                 "cdk synth"
             ]
