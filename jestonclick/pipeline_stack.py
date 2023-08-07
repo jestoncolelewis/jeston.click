@@ -6,9 +6,11 @@ from aws_cdk import(
 from aws_cdk.pipelines import (
     CodePipeline,
     CodePipelineSource,
-    ShellStep
+    ShellStep,
+    ManualApprovalStep
 )
 from .buckets import name
+from .pipeline_stage import PipelineStage
 
 class PipelineStack(Stack):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
@@ -26,3 +28,16 @@ class PipelineStack(Stack):
             ]
             )
         )
+
+        test = PipelineStage(self, "Test")
+        prod = PipelineStage(self, "Prod")
+
+        pipeline.add_stage(test,
+                           post= [
+                               ShellStep("Validate Endpoint", 
+                                         commands=["curl -Ssf https://{}".format(name)])
+                           ])
+        pipeline.add_stage(prod,
+                           pre=[
+                               ManualApprovalStep("PromoteToProd")
+                           ])
