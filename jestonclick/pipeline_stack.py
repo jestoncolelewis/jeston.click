@@ -10,13 +10,12 @@ from aws_cdk.pipelines import (
 )
 from .buckets import name
 
-class ProdPipeline(Construct):
+class PipelineStack(Stack):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         pipeline = CodePipeline(
             self, "Pipeline",
-            pipeline_name="FrontEndPipeline",
             synth=ShellStep(
             "Synth",
             input=CodePipelineSource.git_hub("jestoncolelewis/{}".format(name), "main"),
