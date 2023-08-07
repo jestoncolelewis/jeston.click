@@ -8,7 +8,7 @@ from jestonclick.pipeline_stack import PipelineStack
 
 env = cdk.Environment(account="706391136734", region="us-east-1")
 app = cdk.App()
-# JestonClickStack(app, "JestonClickStack", env)
-PipelineStack(app, "JestonClickWebsite", env)
+# JestonClickStack(app, "JestonClickStack", env=env)
+PipelineStack(app, "JestonClickWebsite", env=env)
 
 app.synth()
