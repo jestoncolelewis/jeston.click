@@ -1,0 +1,92 @@
+/* General */
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer {
+    text-align: center;
+    margin: 75px 0px;
+}
+
+h1 {
+    font-size: 2.6em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+p {
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(73, 73, 73);
+}
+
+/* Special */
+
+#page-left {
+    margin: 30px 50px 0px 30px;
+}
+
+#page-right {
+    margin-right: 50px;
+}
+
+#headshot {
+    margin: 0px 0px 10px;
+    max-width: 250px;
+    border-radius: 50%;
+}
+
+#left-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+#main-title {
+    text-align: center;
+}
+
+/* Responsiveness */
+
+@media screen and (min-width: 900px) {
+    main {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    #page-right {
+        margin-left: 50px;
+    }
+    
+    #headshot {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #page-right {
+        margin: 20px;
+    }
+}

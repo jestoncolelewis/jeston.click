@@ -1,0 +1,6 @@
+name: jeston.click
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: portfolio website
