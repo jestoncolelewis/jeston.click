@@ -56,7 +56,7 @@ www_bucket = aws.s3.Bucket(
 )
 
 # CDN Creation
-cdn = aws.cloudfront.Distribution(
+main_cdn = aws.cloudfront.Distribution(
     "cdn",
     enabled=True,
     origins=[
@@ -127,7 +127,20 @@ cert_validation = aws.route53.Record(
     zone_id=zone.id
 )
 
+# Records
+main_record = aws.route53.Record(
+    "jeston.click-record",
+    zone_id=zone.id,
+    name=website_name,
+    type="A",
+    aliases=[aws.route53.RecordAliasArgs(
+        zone_id=main_cdn.hosted_zone_id,
+        evaluate_target_health=True,
+        name=main_cdn.domain_name
+    )]
+)
+
 # Outputs
-pulumi.export("cdnURL", pulumi.Output.concat("https://", cdn.domain_name))
+pulumi.export("cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
