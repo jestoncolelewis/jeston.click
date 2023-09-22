@@ -112,3 +112,5 @@ cdn = aws.cloudfront.Distribution(
 
 # Outputs
 pulumi.export("cdnURL", pulumi.Output.concat("https://", cdn.domain_name))
+with open("./README.md") as f:
+    pulumi.export("readme", f.read())
