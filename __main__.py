@@ -5,6 +5,7 @@ import pulumi_aws as aws
 
 path = "./www"
 website_name = "jeston.click"
+www_name = "www.{}".format(website_name)
 
 zone = aws.route53.Zone("zone",
     comment="",
@@ -13,6 +14,7 @@ zone = aws.route53.Zone("zone",
 
 main_bucket = aws.s3.Bucket(
     website_name,
+    bucket=website_name,
     website=aws.s3.BucketWebsiteArgs(
         index_document="index.html",
         error_document="404error.html"
@@ -20,7 +22,8 @@ main_bucket = aws.s3.Bucket(
 )
 
 www_bucket = aws.s3.Bucket(
-    "www.{}".format(website_name),
+    www_name,
+    bucket=www_name,
     website=aws.s3.BucketWebsiteArgs(
         redirect_all_requests_to=website_name
     )
