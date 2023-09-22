@@ -1,2 +1,6 @@
 *.pyc
 venv/
+/__pychache__
+/.vscode
+.DS_Store
+*.zip
