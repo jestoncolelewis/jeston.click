@@ -10,11 +10,13 @@ error_document = "404error.html"
 website_name = "jeston.click"
 www_name = "www.{}".format(website_name)
 
+# Imported zone
 zone = aws.route53.Zone("zone",
     comment="",
     name=website_name,
     opts=pulumi.ResourceOptions(protect=True))
 
+# Bucket creation and management
 main_bucket = aws.s3.Bucket(
     website_name,
     bucket=website_name,
@@ -53,6 +55,7 @@ www_bucket = aws.s3.Bucket(
     )
 )
 
+# CDN Creation
 cdn = aws.cloudfront.Distribution(
     "cdn",
     enabled=True,
@@ -109,6 +112,20 @@ cdn = aws.cloudfront.Distribution(
     ),
 )
 
+# Certificate Creation
+certificate = aws.acm.Certificate(
+    "certificate",
+    domain_name=website_name,
+    validation_method="DNS"
+)
+cert_validation = aws.route53.Record(
+    "cert-validation",
+    name=certificate.domain_validation_options[0].resource_record_name,
+    records=[certificate.domain_validation_options[0].resource_record_value],
+    ttl=60,
+    type=certificate.domain_validation_options[0].resource_record_type,
+    zone_id=zone.id
+)
 
 # Outputs
 pulumi.export("cdnURL", pulumi.Output.concat("https://", cdn.domain_name))
