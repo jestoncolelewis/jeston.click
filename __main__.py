@@ -18,7 +18,7 @@ zone = aws.route53.Zone("zone",
 
 # Bucket creation and management
 main_bucket = aws.s3.Bucket(
-    website_name,
+    "main-bucket",
     bucket=website_name,
     website=aws.s3.BucketWebsiteArgs(
         index_document=index_document,
@@ -48,16 +48,33 @@ bucket_folder = synced_folder.S3BucketFolder(
     ])
 )
 www_bucket = aws.s3.Bucket(
-    www_name,
+    "www-bucket",
     bucket=www_name,
     website=aws.s3.BucketWebsiteArgs(
         redirect_all_requests_to=website_name
     )
 )
 
+# Certificate Creation
+certificate = aws.acm.Certificate(
+    "certificate",
+    domain_name=website_name,
+    subject_alternative_names=[www_name],
+    validation_method="DNS"
+)
+cert_validation = aws.route53.Record(
+    "cert-validation",
+    name=certificate.domain_validation_options[0].resource_record_name,
+    records=[certificate.domain_validation_options[0].resource_record_value],
+    ttl=60,
+    type=certificate.domain_validation_options[0].resource_record_type,
+    zone_id=zone.id
+)
+
 # CDN Creation
 main_cdn = aws.cloudfront.Distribution(
     "main-cdn",
+    # aliases=[website_name],
     enabled=True,
     origins=[
         aws.cloudfront.DistributionOriginArgs(
@@ -108,11 +125,12 @@ main_cdn = aws.cloudfront.Distribution(
         ),
     ),
     viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
-        cloudfront_default_certificate=True,
+        acm_certificate_arn=certificate.arn,
     ),
 )
 www_cdn = aws.cloudfront.Distribution(
     "www-cdn",
+    # aliases=[www_name],
     enabled=True,
     origins=[
         aws.cloudfront.DistributionOriginArgs(
@@ -163,24 +181,9 @@ www_cdn = aws.cloudfront.Distribution(
         ),
     ),
     viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
-        cloudfront_default_certificate=True,
+        acm_certificate_arn=certificate.arn,
     ),
-)
-
-# Certificate Creation
-certificate = aws.acm.Certificate(
-    "certificate",
-    domain_name=website_name,
-    validation_method="DNS"
-)
-cert_validation = aws.route53.Record(
-    "cert-validation",
-    name=certificate.domain_validation_options[0].resource_record_name,
-    records=[certificate.domain_validation_options[0].resource_record_value],
-    ttl=60,
-    type=certificate.domain_validation_options[0].resource_record_type,
-    zone_id=zone.id
-)
+) 
 
 # Records
 main_record = aws.route53.Record(
