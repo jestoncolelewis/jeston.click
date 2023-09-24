@@ -1,5 +1,3 @@
-"""A Python Pulumi program"""
-
 import pulumi
 import pulumi_aws as aws
 import pulumi_synced_folder as synced_folder
