@@ -1,4 +1,5 @@
 import pulumi
+import pulumi_archive as archive
 import pulumi_aws as aws
 import pulumi_synced_folder as synced_folder
 
@@ -207,6 +208,41 @@ www_record = aws.route53.Record(
         evaluate_target_health=True,
         name=www_cdn.domain_name
     )]
+)
+
+# Create function
+assume_role = aws.iam.get_policy_document(
+    statements=[
+        aws.iam.GetPolicyDocumentStatementArgs(
+            effect="Allow",
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                type="Service",
+                identifiers=["lambda.amazonaws.com"]
+            )],
+            actions=["sts:AssumeRole"]
+        )
+    ]
+)
+iam_for_lambda = aws.iam.Role(
+    "iamForLambda",
+    assume_role_policy=assume_role.json,
+)
+lambda_basic_attach = aws.iam.RolePolicyAttachment(
+    'lambdaBasicPolicyAttach',
+    role=iam_for_lambda.name,
+    policy_arn='arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+)
+count_lambda = archive.get_file(
+    type="zip",
+    source_file="page_count.py",
+    output_path="lambda_count_payload.zip"
+)
+page_count = aws.lambda_.Function(
+    "page-count",
+    code=pulumi.FileArchive("lambda_count_payload.zip"),
+    role=iam_for_lambda.arn,
+    handler="page_count.handler",
+    runtime="python3.9"
 )
 
 # Outputs
