@@ -72,7 +72,7 @@ cert_validation = aws.route53.Record(
 # CDN Creation
 main_cdn = aws.cloudfront.Distribution(
     "main-cdn",
-    # aliases=[website_name],
+    aliases=[website_name],
     enabled=True,
     origins=[
         aws.cloudfront.DistributionOriginArgs(
@@ -124,11 +124,12 @@ main_cdn = aws.cloudfront.Distribution(
     ),
     viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
         acm_certificate_arn=certificate.arn,
+        ssl_support_method="sni-only"
     ),
 )
 www_cdn = aws.cloudfront.Distribution(
     "www-cdn",
-    # aliases=[www_name],
+    aliases=[www_name],
     enabled=True,
     origins=[
         aws.cloudfront.DistributionOriginArgs(
@@ -180,6 +181,7 @@ www_cdn = aws.cloudfront.Distribution(
     ),
     viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
         acm_certificate_arn=certificate.arn,
+        ssl_support_method="sni-only"
     ),
 ) 
 
