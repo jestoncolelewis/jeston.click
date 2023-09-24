@@ -1,3 +1,4 @@
 pulumi
+pulumi_archive
 pulumi_aws
 pulumi_synced_folder
