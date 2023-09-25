@@ -293,17 +293,12 @@ ddb = aws.dynamodb.Table(
         aws.dynamodb.TableAttributeArgs(
             name="pk",
             type="N"
-        ),
-        aws.dynamodb.TableAttributeArgs(
-            name="date-time",
-            type="S"
-        ),
-        aws.dynamodb.TableAttributeArgs(
-            name="view-num",
-            type="N"
         )
     ],
-    hash_key="pk"
+    hash_key="pk",
+    billing_mode="PROVISIONED",
+    read_capacity=5,
+    write_capacity=5
 )
 
 # Outputs
