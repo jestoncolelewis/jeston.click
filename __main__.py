@@ -285,6 +285,27 @@ stage = aws.apigatewayv2.Stage(
     name="prod"
 )
 
+# Create dynamo
+ddb = aws.dynamodb.Table(
+    "page-count-table",
+    name="jestondotclick-page-views",
+    attributes=[
+        aws.dynamodb.TableAttributeArgs(
+            name="pk",
+            type="N"
+        ),
+        aws.dynamodb.TableAttributeArgs(
+            name="date-time",
+            type="S"
+        ),
+        aws.dynamodb.TableAttributeArgs(
+            name="view-num",
+            type="N"
+        )
+    ],
+    hash_key="pk"
+)
+
 # Outputs
 pulumi.export("cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 with open("./README.md") as f:
