@@ -276,7 +276,7 @@ route = aws.apigatewayv2.Route(
     "route",
     api_id=apigw.id,
     route_key="GET /page-count-b36ac6f",
-    target="integrations/646e9sqw69"
+    target="integrations/rnszu21"
 )
 stage = aws.apigatewayv2.Stage(
     "stage",
