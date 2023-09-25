@@ -232,6 +232,11 @@ lambda_basic_attach = aws.iam.RolePolicyAttachment(
     role=iam_for_lambda.name,
     policy_arn='arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
 )
+ddb_attach = aws.iam.RolePolicyAttachment(
+    "dynamodbPolicyAttach",
+    role=iam_for_lambda.name,
+    policy_arn="arn:aws:iam::aws:policy/service-role/AWSLambdaDynamoDBExecutionRole"
+)
 count_lambda = archive.get_file(
     type="zip",
     source_file="page_count.py",
