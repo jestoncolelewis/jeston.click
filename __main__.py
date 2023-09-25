@@ -245,6 +245,41 @@ page_count = aws.lambda_.Function(
     runtime="python3.9"
 )
 
+# Create api
+apigw = aws.apigatewayv2.Api(
+    "httpAPI", 
+    protocol_type="HTTP",
+    cors_configuration=aws.apigatewayv2.ApiCorsConfigurationArgs(
+        allow_credentials=False,
+        allow_headers=["*"],
+        allow_methods=["*"],
+        allow_origins=["*"],
+        max_age=300
+    )
+)
+integration = aws.apigatewayv2.Integration(
+    "integration",
+    api_id=apigw.id,
+    integration_method="POST",
+    integration_type="AWS_PROXY",
+    integration_uri=page_count.arn,
+    passthrough_behavior="WHEN_NO_MATCH",
+    payload_format_version="2.0",
+    timeout_milliseconds=30000
+)
+route = aws.apigatewayv2.Route(
+    "route",
+    api_id=apigw.id,
+    route_key="GET /page-count-b36ac6f",
+    target="integrations/646e9sqw69"
+)
+stage = aws.apigatewayv2.Stage(
+    "stage",
+    api_id=apigw.id,
+    auto_deploy=True,
+    name="prod"
+)
+
 # Outputs
 pulumi.export("cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 with open("./README.md") as f:
