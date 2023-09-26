@@ -8,16 +8,17 @@ index_document = "index.html"
 error_document = "404error.html"
 website_name = "jeston.click"
 www_name = "www.{}".format(website_name)
+project_name = "jestonclick-"
 
 # Imported zone
 zone = aws.route53.Zone(
-    "zone",
+    f"{project_name}zone",
     name=website_name
 )
 
 # Bucket creation and management
 main_bucket = aws.s3.Bucket(
-    "main-bucket",
+    f"{project_name}main-bucket",
     bucket=website_name,
     website=aws.s3.BucketWebsiteArgs(
         index_document=index_document,
@@ -25,19 +26,19 @@ main_bucket = aws.s3.Bucket(
     )
 )
 ownership_controls = aws.s3.BucketOwnershipControls(
-    "ownership-controls",
+    f"{project_name}ownership-controls",
     bucket=main_bucket.id,
     rule=aws.s3.BucketOwnershipControlsRuleArgs(
         object_ownership="ObjectWriter"
     )
 )
 public_access_block = aws.s3.BucketPublicAccessBlock(
-    "public_access_block",
+    f"{project_name}public_access_block",
     bucket=main_bucket.id,
     block_public_acls=False
 )
 bucket_folder = synced_folder.S3BucketFolder(
-    "bucket-folder",
+    f"{project_name}bucket-folder",
     acl="public-read",
     bucket_name=main_bucket.bucket,
     path=path,
@@ -47,7 +48,7 @@ bucket_folder = synced_folder.S3BucketFolder(
     ])
 )
 www_bucket = aws.s3.Bucket(
-    "www-bucket",
+    f"{project_name}www-bucket",
     bucket=www_name,
     website=aws.s3.BucketWebsiteArgs(
         redirect_all_requests_to=website_name
@@ -56,13 +57,13 @@ www_bucket = aws.s3.Bucket(
 
 # Certificate Creation
 certificate = aws.acm.Certificate(
-    "certificate",
+    f"{project_name}certificate",
     domain_name=website_name,
     subject_alternative_names=[www_name],
     validation_method="DNS"
 )
 cert_validation = aws.route53.Record(
-    "cert-validation",
+    f"{project_name}cert-validation",
     name=certificate.domain_validation_options[0].resource_record_name,
     records=[certificate.domain_validation_options[0].resource_record_value],
     ttl=60,
@@ -72,7 +73,7 @@ cert_validation = aws.route53.Record(
 
 # CDN Creation
 main_cdn = aws.cloudfront.Distribution(
-    "main-cdn",
+    f"{project_name}main-cdn",
     aliases=[website_name],
     enabled=True,
     origins=[
@@ -129,7 +130,7 @@ main_cdn = aws.cloudfront.Distribution(
     ),
 )
 www_cdn = aws.cloudfront.Distribution(
-    "www-cdn",
+    f"{project_name}www-cdn",
     aliases=[www_name],
     enabled=True,
     origins=[
@@ -188,7 +189,7 @@ www_cdn = aws.cloudfront.Distribution(
 
 # Records
 main_record = aws.route53.Record(
-    "main-record",
+    f"{project_name}main-record",
     zone_id=zone.id,
     name=website_name,
     type="A",
@@ -199,7 +200,7 @@ main_record = aws.route53.Record(
     )]
 )
 www_record = aws.route53.Record(
-    "www-record",
+    f"{project_name}www-record",
     zone_id=zone.id,
     name=www_name,
     type="A",
@@ -224,16 +225,16 @@ assume_role = aws.iam.get_policy_document(
     ]
 )
 iam_for_lambda = aws.iam.Role(
-    "iamForLambda",
+    f"{project_name}iamForLambda",
     assume_role_policy=assume_role.json,
 )
 lambda_basic_attach = aws.iam.RolePolicyAttachment(
-    'lambdaBasicPolicyAttach',
+    f"{project_name}lambdaBasicPolicyAttach",
     role=iam_for_lambda.name,
     policy_arn='arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
 )
 ddb_attach = aws.iam.RolePolicyAttachment(
-    "dynamodbPolicyAttach",
+    f"{project_name}dynamodbPolicyAttach",
     role=iam_for_lambda.name,
     policy_arn="arn:aws:iam::aws:policy/service-role/AWSLambdaDynamoDBExecutionRole"
 )
@@ -243,7 +244,7 @@ count_lambda = archive.get_file(
     output_path="lambda_count_payload.zip"
 )
 page_count = aws.lambda_.Function(
-    "page-count",
+    f"{project_name}page-count",
     code=pulumi.FileArchive("lambda_count_payload.zip"),
     role=iam_for_lambda.arn,
     handler="page_count.handler",
@@ -252,7 +253,7 @@ page_count = aws.lambda_.Function(
 
 # Create api
 apigw = aws.apigatewayv2.Api(
-    "httpAPI", 
+    f"{project_name}httpAPI", 
     protocol_type="HTTP",
     cors_configuration=aws.apigatewayv2.ApiCorsConfigurationArgs(
         allow_credentials=False,
@@ -263,7 +264,7 @@ apigw = aws.apigatewayv2.Api(
     )
 )
 integration = aws.apigatewayv2.Integration(
-    "integration",
+    f"{project_name}integration",
     api_id=apigw.id,
     integration_method="POST",
     integration_type="AWS_PROXY",
@@ -273,13 +274,13 @@ integration = aws.apigatewayv2.Integration(
     timeout_milliseconds=30000
 )
 route = aws.apigatewayv2.Route(
-    "route",
+    f"{project_name}route",
     api_id=apigw.id,
     route_key="GET /page-count-b36ac6f",
     target="integrations/rnszu21"
 )
 stage = aws.apigatewayv2.Stage(
-    "stage",
+    f"{project_name}stage",
     api_id=apigw.id,
     auto_deploy=True,
     name="prod"
@@ -287,7 +288,7 @@ stage = aws.apigatewayv2.Stage(
 
 # Create dynamo
 ddb = aws.dynamodb.Table(
-    "page-count-table",
+    f"{project_name}page-count-table",
     name="jestondotclick-page-views",
     attributes=[
         aws.dynamodb.TableAttributeArgs(
@@ -302,6 +303,6 @@ ddb = aws.dynamodb.Table(
 )
 
 # Outputs
-pulumi.export("cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
+pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
