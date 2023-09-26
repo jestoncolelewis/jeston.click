@@ -233,10 +233,27 @@ lambda_basic_attach = aws.iam.RolePolicyAttachment(
     role=iam_for_lambda.name,
     policy_arn='arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
 )
+ddb_policy_document = aws.iam.get_policy_document(
+    statements=[
+        aws.iam.GetPolicyDocumentStatementArgs(
+            effect="Allow",
+            actions=[
+                "dynamodb:GetItem",
+                "dynamodb:UpdateItem"
+            ],
+            resources=["*"]
+        )
+    ]
+)
+ddb_policy = aws.iam.Policy(
+    f"{project_name}ddb-policy",
+    description="lambda access to dynamodb",
+    policy=ddb_policy_document.json
+)
 ddb_attach = aws.iam.RolePolicyAttachment(
     f"{project_name}dynamodbPolicyAttach",
     role=iam_for_lambda.name,
-    policy_arn="arn:aws:iam::aws:policy/service-role/AWSLambdaDynamoDBExecutionRole"
+    policy_arn=ddb_policy.arn
 )
 count_lambda = archive.get_file(
     type="zip",
