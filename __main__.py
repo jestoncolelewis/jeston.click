@@ -10,10 +10,10 @@ website_name = "jeston.click"
 www_name = "www.{}".format(website_name)
 
 # Imported zone
-zone = aws.route53.Zone("zone",
-    comment="",
-    name=website_name,
-    opts=pulumi.ResourceOptions(protect=True))
+zone = aws.route53.Zone(
+    "zone",
+    name=website_name
+)
 
 # Bucket creation and management
 main_bucket = aws.s3.Bucket(
