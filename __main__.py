@@ -7,7 +7,7 @@ path = "./www"
 index_document = "index.html"
 error_document = "404error.html"
 website_name = "jeston.click"
-www_name = "www.{}".format(website_name)
+www_name = f"www.{website_name}"
 project_name = "jestonclick-"
 
 # Imported zone
