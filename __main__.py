@@ -293,8 +293,8 @@ integration = aws.apigatewayv2.Integration(
 route = aws.apigatewayv2.Route(
     f"{project_name}route",
     api_id=apigw.id,
-    route_key="GET /page-count-b36ac6f",
-    target="integrations/rnszu21"
+    route_key="GET /jestonclick-page-count-31ee36e",
+    target="integrations/8wuggeg"
 )
 stage = aws.apigatewayv2.Stage(
     f"{project_name}stage",
@@ -321,5 +321,7 @@ ddb = aws.dynamodb.Table(
 
 # Outputs
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
+pulumi.export(f"{project_name}pageCountName", page_count.name)
+pulumi.export(f"{project_name}integrationID", integration.id)
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
