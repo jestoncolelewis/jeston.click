@@ -323,5 +323,6 @@ ddb = aws.dynamodb.Table(
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 pulumi.export(f"{project_name}pageCountName", page_count.name)
 pulumi.export(f"{project_name}integrationID", integration.id)
+pulumi.export(f"{project_name}lambdaInvokeURL", pulumi.Output.concat("https://",apigw.api_endpoint,page_count.name))
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
