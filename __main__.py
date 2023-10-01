@@ -2,6 +2,7 @@ import pulumi
 import pulumi_archive as archive
 import pulumi_aws as aws
 import pulumi_synced_folder as synced_folder
+import records
 
 path = "./www"
 index_document = "index.html"
@@ -14,6 +15,16 @@ project_name = "jestonclick-"
 zone = aws.route53.Zone(
     f"{project_name}zone",
     name=website_name
+)
+
+# Mail records
+txt = aws.route53.Record(
+    f"{project_name}-txt-record",
+    zone_id=zone.id,
+    name=website_name,
+    type="TXT",
+    ttl=300,
+    records=[records.txt_verify]
 )
 
 # Bucket creation and management
@@ -187,7 +198,7 @@ www_cdn = aws.cloudfront.Distribution(
     ),
 ) 
 
-# Records
+# CDN Records
 main_record = aws.route53.Record(
     f"{project_name}main-record",
     zone_id=zone.id,
@@ -323,6 +334,6 @@ ddb = aws.dynamodb.Table(
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 pulumi.export(f"{project_name}pageCountName", page_count.name)
 pulumi.export(f"{project_name}integrationID", integration.id)
-pulumi.export(f"{project_name}lambdaInvokeURL", pulumi.Output.concat("https://",apigw.api_endpoint,page_count.name))
+pulumi.export(f"{project_name}lambdaInvokeURL", pulumi.Output.concat(apigw.api_endpoint, "/", stage.name, "/", page_count.name))
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
