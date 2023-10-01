@@ -369,12 +369,6 @@ ddb = aws.dynamodb.Table(
     read_capacity=5,
     write_capacity=5
 )
-""" first_item = aws.dynamodb.TableItem(
-    f"{project_name}initial-item",
-    table_name=ddb.name,
-    hash_key=ddb.hash_key,
-    item="" # TODO
-) """
 
 # Outputs
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
