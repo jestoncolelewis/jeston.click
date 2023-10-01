@@ -24,7 +24,47 @@ txt = aws.route53.Record(
     name=website_name,
     type="TXT",
     ttl=300,
-    records=[records.txt_verify]
+    records=records.txt_verify
+)
+mx = aws.route53.Record(
+    f"{project_name}mx-record",
+    zone_id=zone.id,
+    name=website_name,
+    type="MX",
+    ttl=300,
+    records=records.mx
+)
+dkim1 = aws.route53.Record(
+    f"{project_name}dkim1-record",
+    zone_id=zone.id,
+    name="protonmail._domainkey",
+    type="CNAME",
+    ttl=300,
+    records=records.dkim1
+)
+dkim2 = aws.route53.Record(
+    f"{project_name}dkim2-record",
+    zone_id=zone.id,
+    name="protonmail2._domainkey",
+    type="CNAME",
+    ttl=300,
+    records=records.dkim2
+)
+dkim3 = aws.route53.Record(
+    f"{project_name}dkim3-record",
+    zone_id=zone.id,
+    name="protonmail3._domainkey",
+    type="CNAME",
+    ttl=300,
+    records=records.dkim3
+)
+dmarc = aws.route53.Record(
+    f"{project_name}dmarc-record",
+    zone_id=zone.id,
+    name="_dmarc",
+    type="TXT",
+    ttl=300,
+    records=records.dmarc
 )
 
 # Bucket creation and management
@@ -329,12 +369,12 @@ ddb = aws.dynamodb.Table(
     read_capacity=5,
     write_capacity=5
 )
-first_item = aws.dynamodb.TableItem(
+""" first_item = aws.dynamodb.TableItem(
     f"{project_name}initial-item",
     table_name=ddb.name,
     hash_key=ddb.hash_key,
     item="" # TODO
-)
+) """
 
 # Outputs
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
