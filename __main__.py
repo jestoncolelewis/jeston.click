@@ -1,8 +1,8 @@
+import os
 import pulumi
 import pulumi_archive as archive
 import pulumi_aws as aws
 import pulumi_synced_folder as synced_folder
-import records
 
 path = "./www"
 index_document = "index.html"
@@ -24,7 +24,7 @@ txt = aws.route53.Record(
     name=website_name,
     type="TXT",
     ttl=300,
-    records=records.txt_verify
+    records=[os.getenv("TXT1"), os.getenv("TXT2")] # type: ignore
 )
 mx = aws.route53.Record(
     f"{project_name}mx-record",
@@ -32,7 +32,7 @@ mx = aws.route53.Record(
     name=website_name,
     type="MX",
     ttl=300,
-    records=records.mx
+    records=[os.getenv("MX1"), os.getenv("MX2")] # type: ignore
 )
 dkim1 = aws.route53.Record(
     f"{project_name}dkim1-record",
@@ -40,7 +40,7 @@ dkim1 = aws.route53.Record(
     name="protonmail._domainkey",
     type="CNAME",
     ttl=300,
-    records=records.dkim1
+    records=[os.getenv("DKIM1")] # type: ignore
 )
 dkim2 = aws.route53.Record(
     f"{project_name}dkim2-record",
@@ -48,7 +48,7 @@ dkim2 = aws.route53.Record(
     name="protonmail2._domainkey",
     type="CNAME",
     ttl=300,
-    records=records.dkim2
+    records=[os.getenv("DKIM2")] # type: ignore
 )
 dkim3 = aws.route53.Record(
     f"{project_name}dkim3-record",
@@ -56,7 +56,7 @@ dkim3 = aws.route53.Record(
     name="protonmail3._domainkey",
     type="CNAME",
     ttl=300,
-    records=records.dkim3
+    records=[os.getenv("DKIM3")] # type: ignore
 )
 dmarc = aws.route53.Record(
     f"{project_name}dmarc-record",
@@ -64,7 +64,7 @@ dmarc = aws.route53.Record(
     name="_dmarc",
     type="TXT",
     ttl=300,
-    records=records.dmarc
+    records=[os.getenv("DMARC")] # type: ignore
 )
 
 # Bucket creation and management
