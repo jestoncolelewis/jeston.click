@@ -1,4 +1,3 @@
 config:
   aws:region: us-east-1
-  aws:skipCredentialsValidation: "true"
   jeston.click:region: us-east-1
