@@ -24,7 +24,7 @@ txt = aws.route53.Record(
     name=website_name,
     type="TXT",
     ttl=300,
-    records=[os.getenv("TXT1"), os.getenv("TXT2")] # type: ignore
+    records=[os.getenv("TXT1"), os.getenv("TXT2")]
 )
 mx = aws.route53.Record(
     f"{project_name}mx-record",
@@ -32,7 +32,7 @@ mx = aws.route53.Record(
     name=website_name,
     type="MX",
     ttl=300,
-    records=[os.getenv("MX1"), os.getenv("MX2")] # type: ignore
+    records=[os.getenv("MX1"), os.getenv("MX2")]
 )
 dkim1 = aws.route53.Record(
     f"{project_name}dkim1-record",
@@ -40,7 +40,7 @@ dkim1 = aws.route53.Record(
     name="protonmail._domainkey",
     type="CNAME",
     ttl=300,
-    records=[os.getenv("DKIM1")] # type: ignore
+    records=[os.getenv("DKIM1")]
 )
 dkim2 = aws.route53.Record(
     f"{project_name}dkim2-record",
@@ -48,7 +48,7 @@ dkim2 = aws.route53.Record(
     name="protonmail2._domainkey",
     type="CNAME",
     ttl=300,
-    records=[os.getenv("DKIM2")] # type: ignore
+    records=[os.getenv("DKIM2")]
 )
 dkim3 = aws.route53.Record(
     f"{project_name}dkim3-record",
@@ -56,7 +56,7 @@ dkim3 = aws.route53.Record(
     name="protonmail3._domainkey",
     type="CNAME",
     ttl=300,
-    records=[os.getenv("DKIM3")] # type: ignore
+    records=[os.getenv("DKIM3")]
 )
 dmarc = aws.route53.Record(
     f"{project_name}dmarc-record",
@@ -64,7 +64,7 @@ dmarc = aws.route53.Record(
     name="_dmarc",
     type="TXT",
     ttl=300,
-    records=[os.getenv("DMARC")] # type: ignore
+    records=[os.getenv("DMARC")]
 )
 
 # Bucket creation and management
@@ -236,7 +236,7 @@ www_cdn = aws.cloudfront.Distribution(
         acm_certificate_arn=certificate.arn,
         ssl_support_method="sni-only"
     ),
-) 
+)
 
 # CDN Records
 main_record = aws.route53.Record(
@@ -321,7 +321,7 @@ page_count = aws.lambda_.Function(
 
 # Create api
 apigw = aws.apigatewayv2.Api(
-    f"{project_name}httpAPI", 
+    f"{project_name}httpAPI",
     protocol_type="HTTP",
     cors_configuration=aws.apigatewayv2.ApiCorsConfigurationArgs(
         allow_credentials=False,
@@ -374,6 +374,7 @@ ddb = aws.dynamodb.Table(
 pulumi.export(f"{project_name}cdnURL", pulumi.Output.concat("https://", main_cdn.domain_name))
 pulumi.export(f"{project_name}pageCountName", page_count.name)
 pulumi.export(f"{project_name}integrationID", integration.id)
-pulumi.export(f"{project_name}lambdaInvokeURL", pulumi.Output.concat(apigw.api_endpoint, "/", stage.name, "/", page_count.name))
+pulumi.export(f"{project_name}lambdaInvokeURL", pulumi.Output.concat(apigw.api_endpoint,
+                                                                     "/", stage.name, "/", page_count.name))
 with open("./README.md") as f:
     pulumi.export("readme", f.read())
