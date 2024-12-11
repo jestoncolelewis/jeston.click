@@ -17,32 +17,6 @@ zone = aws.route53.Zone(
     name=website_name
 )
 
-# Mail records
-txt = aws.route53.Record(
-    f"{project_name}-txt-record",
-    zone_id=zone.id,
-    name=website_name,
-    type="TXT",
-    ttl=300,
-    records=[os.getenv("TXT1"), os.getenv("TXT2")]
-)
-mx = aws.route53.Record(
-    f"{project_name}mx-record",
-    zone_id=zone.id,
-    name=website_name,
-    type="MX",
-    ttl=300,
-    records=[os.getenv("MX1"), os.getenv("MX2")]
-)
-dkim1 = aws.route53.Record(
-    f"{project_name}dkim-record",
-    zone_id=zone.id,
-    name="sig1._domainkey",
-    type="CNAME",
-    ttl=300,
-    records=[os.getenv("DKIM1")]
-)
-
 # Bucket creation and management
 main_bucket = aws.s3.Bucket(
     f"{project_name}main-bucket",
