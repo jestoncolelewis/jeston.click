@@ -35,36 +35,12 @@ mx = aws.route53.Record(
     records=[os.getenv("MX1"), os.getenv("MX2")]
 )
 dkim1 = aws.route53.Record(
-    f"{project_name}dkim1-record",
+    f"{project_name}dkim-record",
     zone_id=zone.id,
-    name="protonmail._domainkey",
+    name="sig1._domainkey",
     type="CNAME",
     ttl=300,
     records=[os.getenv("DKIM1")]
-)
-dkim2 = aws.route53.Record(
-    f"{project_name}dkim2-record",
-    zone_id=zone.id,
-    name="protonmail2._domainkey",
-    type="CNAME",
-    ttl=300,
-    records=[os.getenv("DKIM2")]
-)
-dkim3 = aws.route53.Record(
-    f"{project_name}dkim3-record",
-    zone_id=zone.id,
-    name="protonmail3._domainkey",
-    type="CNAME",
-    ttl=300,
-    records=[os.getenv("DKIM3")]
-)
-dmarc = aws.route53.Record(
-    f"{project_name}dmarc-record",
-    zone_id=zone.id,
-    name="_dmarc",
-    type="TXT",
-    ttl=300,
-    records=[os.getenv("DMARC")]
 )
 
 # Bucket creation and management
