@@ -67,7 +67,7 @@ a {
 .goal-tech {
     display: flex;
     justify-content: space-between;
-    max-width: 650px;
+    max-width: 800px;
 }
 
 /* Responsiveness */
@@ -88,6 +88,10 @@ a {
         margin-left: auto;
         margin-right: auto;
         width: 50%;
+    }
+
+    .goal-tech {
+        display: block;
     }
 }
 
