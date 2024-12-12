@@ -64,6 +64,10 @@ a {
     text-align: center;
 }
 
+#summary {
+    text-align: left;
+}
+
 .goal-tech {
     display: flex;
     justify-content: space-between;
