@@ -40,7 +40,13 @@ a {
 /* Special */
 
 #page-left {
-    margin: 30px 50px 0px 30px;
+    margin: 10px 30px 0px 10px;
+}
+
+#profile {
+    position: sticky;
+    top: 0;
+    padding: 20px;
 }
 
 #page-right {
