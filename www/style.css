@@ -80,6 +80,12 @@ a {
     max-width: 800px;
 }
 
+.goals,
+.outcomes,
+.tech {
+    max-width: 260px;
+}
+
 /* Responsiveness */
 
 @media screen and (min-width: 900px) {
