@@ -1,7 +1,6 @@
 /* General */
 
 html {
-    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -84,6 +83,15 @@ a {
 .outcomes,
 .tech {
     max-width: 260px;
+}
+
+#education > h3 {
+    margin-bottom: 0px;
+}
+
+#date-degree {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Responsiveness */
