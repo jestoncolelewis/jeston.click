@@ -15,99 +15,538 @@
 <body>
     <main>
         <div id="page-left">
-            <img src="./assets/Jeston - 1 of 1.jpeg" alt="Jeston Cole Lewis in a suit with a bowtie" id="headshot">
-            <div id="left-links">
-                <a href="http://linkedin.com/in/jestoncolelewis/" target="_blank">Linkedin</a>
-                <a href="https://github.com/jestoncolelewis" target="_blank">Github</a>
-                <a href="mailto:jeston@jestonlewiscreative.com" target="_blank">Email</a>
+            <div id="profile">
+                <img src="./assets/Jeston - 1 of 1.jpeg" alt="Jeston Cole Lewis in a suit with a bowtie" id="headshot">
+                <div id="left-links">
+                    <a href="https://linkedin.com/in/jestoncolelewis/" target="_blank">Linkedin</a>
+                    <a href="https://github.com/jestoncolelewis" target="_blank">GitHub</a>
+                    <a href="mailto:jeston@jestonlewiscreative.com" target="_blank">Email</a>
+                </div>
             </div>
         </div>
 
         <div id="page-right">
             <div id="main-title">
                 <h1>Jeston Cole Lewis</h1>
+                <div id="summary">
+                    <h3>Summary</h3>
+                    <p>Aspiring Junior Software Engineer who recently graduated from university with a bachelor’s in
+                        computer science. Built strong foundation in software development principles including agile
+                        methodologies and S.O.L.I.D. principles. Bringing strong skills in technical troubleshooting,
+                        leadership, and client relations from the audiovisual industry. Developed software applications
+                        using Python, Java, and JavaScript. Projects included machine learning, full stack, and
+                        deployment. Looking to leverage my skills to solve real world business problems in a junior
+                        software engineering role.</p>
+                </div>
             </div>
             <div id="projects">
-                <h2>Projects</h2>
-                <h3>C++ School Project</h3>
-                <p>Introductory C++ project for CS degree class. </p>
-                <div class="goal-tech">
-                    <div>
-                        <h4>Goals</h4>
-                        <ul>
-                            <li>Manipulate array of strings</li>
-                            <li>Create array of student object</li>
-                            <li>Only interact with variables using getters/setters</li>
-                            <li>Utilize destructor for array of students</li>
-                        </ul>
+                <h2>Projects</h2> <!-- TODO: only show 5 projects -->
+
+                <div id="GetHome">
+                    <h3>Get Home</h3>
+                    <h5 class="project-date">October 2024 - November 2024</h5>
+                    <p>A small arcade game that was made as an exercise to learn game development. The game consists of
+                        player character that is controlled using the keyboard and mouse. The keyboard is used to
+                        control movement and the mouse is used to control aiming. The player shoots projectiles at
+                        enemies. The enemies are spawned randomly in the field of view. The player has 90 seconds to
+                        destroy as many enemies as possible. If the player is hit 5 times, the game is over. Points
+                        display if 90 seconds is over or if the player runs out of health.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://github.com/jestoncolelewis/get_home">Repo</a>
                     </div>
-                    <div>
-                        <h4>Technology</h4>
-                        <ul>
-                            <li>Language: C++</li>
-                            <li>IDE: XCode</li>
-                        </ul>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Create custom art</li>
+                                <li>Compose music</li>
+                                <li>Learn basics of Godot</li>
+                                <li>Experiment with C#</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Built custom art</li>
+                                <li>Composed original music</li>
+                                <li>Learned basics of Godot</li>
+                                <li>Wrote in C# .NET</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: C#</li>
+                                <li>Libraries: .NET</li>
+                                <li>OS: MacOS, Windows</li>
+                                <li>IDE: Godot, Rider</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <h3>Garden Waterer</h3>
-                <p>One of my passions is gardening, and I have always been interested in finding ways to optimize my watering habits to ensure that my plants receive the optimal amount of moisture. To this end, I have been working on a project to create a device that can monitor soil moisture levels and provide recommendations for watering based on the specific needs of each plant. This device would be built using a microcontroller such as Arduino and would be connected wirelessly to a dashboard created using Python. This dashboard would collect and analyze data from the device, providing real-time insights into soil moisture levels and helping me to make informed decisions about watering. I am excited to see how this project will help me to improve the health and vitality of my garden, and I am looking forward to the opportunity to share my progress with others who share a similar interest in gardening and technology.</p>
-                <div class="goal-tech">
-                    <div>
-                        <h4>Goals</h4>
-                        <ul>
-                            <li>Connect wirelessly</li>
-                            <li>Use weather data in creating watering schedule</li>
-                            <li>Have device control watering</li>
-                            <li>Use moisture detection for best watering results</li>
-                        </ul>
+                <div id="FormulaOnePredictor">
+                    <h3>Formula One Predictor</h3>
+                    <h5 class="project-date">August 2024 - September 2024</h5>
+                    <p>Final project for bachelor's degree at Western Governors University. A machine learning powered
+                        application to predict the outcome of Formula 1 races for a fictional betting platform. It was
+                        engineered using Python. The model used the TensorFlow Decision Forest library. Training data
+                        came from open source archives. Used Jupyter Notebook to clean and conform data. User interface
+                        designed using Streamlit. Deployed to Streamlit for assignment, and redeployed using Docker and
+                        AWS EC2 for updates and maintenance.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://f1-predictor.streamlit.app/">Live</a>
+                        <a href="https://github.com/jestoncolelewis/Formula_One_Predictor">Repo</a>
                     </div>
-                    <div>
-                        <h4>Technology</h4>
-                        <ul>
-                            <li>Language: C++</li>
-                            <li>Arduino</li>
-                            <li>MariaDB</li>
-                        </ul>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Prediction success rate of at least 70%</li>
+                                <li>Easy to use UI</li>
+                                <li>Deploy to cloud</li>
+                                <li>Produce at least three visuals</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Delivered accuracy of 79%</li>
+                                <li>Built easy to use UI</li>
+                                <li>Deployed to cloud</li>
+                                <li>Produced five visualizations</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: Python</li>
+                                <li>Libraries: TensorFlow, Streamlit</li>
+                                <li>OS: Web</li>
+                                <li>IDE: PyCharm</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <h3>Image Converter</h3>
-                <p>While taking the free version of CS50, I was inspired by a problem set involving photo conversion to build my own tool for converting images between various styles. This tool, which is being refactored in Python from C, will allow users to easily convert images between styles such as Grayscale, Sepia, and Reflect, as well as resize them as needed. To make the tool accessible to a wide range of users, I plan to deploy it using a web-based UI with an Amazon Web Services (AWS) backbone. My goal is to create a user-friendly tool that can help people quickly and easily modify their images to meet their specific needs.</p>
-                <div class="goal-tech">
-                    <div>
-                        <h4>Goals</h4>
-                        <ul>
-                            <li>Have an easy to use GUI</li>
-                            <li>Refactor into Python</li>
-                            <li>Deploy using AWS services</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Technology</h4>
-                        <ul>
-                            <li>Tech 1</li>
-                            <li>Tech 2</li>
-                            <li>Tech 3</li>
-                            <li>Tech 4</li>
-                        </ul>
+                <div id="NearestNeighborDeliveryApplication">
+                    <h3>Nearest Neighbor Delivery Application</h3>
+                    <h5 class="project-date">June 2024 - July 2024</h5>
+                    <p>Final project for data structures and algorithms II, engineering a route calculation application
+                        using a custom hash table for a fictional logistics company. Only three trucks are
+                        available and total distance driven cannot exceed 140 miles. The application was built using
+                        Python and has a user-friendly CLI.</p>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Deliver all packages on time</li>
+                                <li>Total mileage cannot exceed 140 miles</li>
+                                <li>Build user-friendly UI</li>
+                                <li>Develop custom hash table</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Delivered all packages on time</li>
+                                <li>Total mileage is 114</li>
+                                <li>Built simple CLI</li>
+                                <li>Developed custom hash table</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: Python</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: MacOS, Windows</li>
+                                <li>IDE: PyCharm</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <!-- <div id="certificates">
-                    <h2>Certificates</h2>
+                <div id="BackendMultithread">
+                    <h3>Backend Multithread Modification of Spring Application</h3>
+                    <h5 class="project-date">March 2024 - April 2024</h5>
+                    <p>Final project for Advanced Java course at Western Governors University, modifying a Spring
+                        application with a Java backend and Angular frontend to incorporate multithreaded features for
+                        real-time language translation, time zone-based messaging, and currency exchange capabilities.
+                        Implemented changes utilizing IntelliJ IDE and deployed the application to AWS EC2 using
+                        Docker.</p>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Use multithreading to display the following</li>
+                                <li>Welcome message in multiple languages</li>
+                                <li>Price in USD, CAD, and Euros</li>
+                                <li>Localized time</li>
+                                <li>Deploy to AWS using Docker</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Added multithreading for displayed updates</li>
+                                <li>Displayed welcome message in English and French</li>
+                                <li>Showed prices in USD, CAD, and Euros</li>
+                                <li>Times shown are localized</li>
+                                <li>Deployed to AWS EC2 to Docker</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: Java</li>
+                                <li>Frameworks: Spring</li>
+                                <li>OS: Web</li>
+                                <li>IDE: IntelliJ IDEA</li>
+                                <li>Deployment: Docker, AWS EC2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="SpringBootTravelApplication">
+                    <h3>Travel Agency Web Shop</h3>
+                    <h5 class="project-date">February 2024 - March 2024</h5>
+                    <p>Final project for Back-end Programming at Western Governors University. Engineered a website for a fictional
+                        travel agency. Ensured that users could add trips and excursions to a cart, add contact details,
+                        and complete the checkout process. At the end, the user would receive a randomly generated
+                        confirmation number</p>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Build classes based on UML/ERD diagrams</li>
+                                <li>Create persistent data</li>
+                                <li>Link backend to frontend</li>
+                                <li>Include validation</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Built accurate classes based on diagrams</li>
+                                <li>Data writes to the database</li>
+                                <li>Backend and frontend communicate without error</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: Java</li>
+                                <li>Frameworks: Spring Boot, Angular</li>
+                                <li>OS: Web</li>
+                                <li>IDE: IntelliJ IDEA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="OdinCalculator">
+                    <h3>Calculator</h3>
+                    <h5 class="project-date">February 2024</h5>
+                    <p>Final project for the Foundations course at The Odin Project. Built using only HTML, CSS, and
+                        JavScript. Built a simple calculator with all basic calculator functions.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://jestoncolelewis.github.io/odin-calculator/">Live</a>
+                        <a href="https://github.com/jestoncolelewis/odin-calculator">Repo</a>
+                    </div>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Contain all basic functions</li>
+                                <li>Evaluate no more than one pair of numbers</li>
+                                <li>Does not crash when dividing by zero</li>
+                                <li>Develop custom styling</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>All basic functions work</li>
+                                <li>Only two inputs are evaluated at a time</li>
+                                <li>Displays message when user tries dividing by zero instead of crashing</li>
+                                <li>Custom styling added</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: HTML, CSS, JavaScript</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: Web</li>
+                                <li>IDE: WebStorm</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="SpringBootApplication">
+                    <h3>Spring Boot Application</h3>
+                    <h5 class="project-date">January 2024</h5>
+                    <p>Final project for Java Frameworks at Western Governors University. Developed an object-oriented
+                        application integrated with a MySQL relational database. Utilized Java and the Spring Boot
+                        framework to support scalable backend functionality. Implemented design patterns and full-stack
+                        development with Angular for the frontend and GitLab for version control. Enhanced code
+                        modularity and maintainability in a remote development environment.</p>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Modify code to track minimum/maximum of inventory</li>
+                                <li>Use MVC to display objects</li>
+                                <li>Create validation for inventory min/max</li>
+                                <li>Add at least two unit tests</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Modifications track inventory quantities</li>
+                                <li>MVC properly displays objects</li>
+                                <li>Validation confirms inventory min/max aren't exceeded</li>
+                                <li>Created two unit tests</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: Java, JavaScript, MySQL</li>
+                                <li>Frameworks: Spring Boot, Angular</li>
+                                <li>OS: Web</li>
+                                <li>IDE: IntelliJ IDEA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ClassRoster">
+                    <h3>C++ School Project</h3>
+                    <h5 class="project-date">August 2023</h5>
+                    <p>Command line program for intro to C++ class at Western Governors University. Took a series string
+                        inputs and manipulated them into objects. Checked the validity of the various inputs, including
+                        email and phone numbers.</p>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Manipulate array of strings</li>
+                                <li>Create array of student objects</li>
+                                <li>Only interact with variables using getters/setters</li>
+                                <li>Utilize destructor for array of students</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Extracts individual elements from string</li>
+                                <li>Student objects are created an added to a list</li>
+                                <li>All variables are private</li>
+                                <li>Destructor properly prevents memory leaks</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Language: C++</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: MacOS</li>
+                                <li>IDE: XCode</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Etch-a-Sketch">
+                    <h3>Etch-a-Sketch</h3>
+                    <h5 class="project-date">April 2023</h5>
+                    <p>Project for the Foundations Course at the Odin Project. Built digital version of an
+                        Etch-a-Sketch using HTML, CSS, and JavaScript.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://jestoncolelewis.github.io/etchasketch/">Live</a>
+                        <a href="https://github.com/jestoncolelewis/etchasketch">Repo</a>
+                    </div>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Build a minimum 16x16 square canvas dynamically</li>
+                                <li>Create a hover effect to update the color of each "pixel"</li>
+                                <li>Make a clear button</li>
+                                <li>Develop a toggle for number of squares</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Canvas is dynamically created</li>
+                                <li>Hovering changes "pixel" color</li>
+                                <li>Clear button removed "pixel" coloring</li>
+                                <li>Toggle changes number of "pixels" created</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: HTML, CSS, JavaScript</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: Web</li>
+                                <li>IDE: VS Code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="TimeStamper">
+                    <h3>Timestamper</h3>
+                    <h5 class="project-date">February 2023</h5>
+                    <p>Built for a client who needed to add timestamps to large quantities of photos. Used Python to
+                        build a basic tool that would accept multiple images, read the timing data from the file, and add
+                        the text to the output. Developed a simple UI with Tkinter.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://github.com/jestoncolelewis/timestamper">Repo</a>
+                    </div>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Read timestamp data from file</li>
+                                <li>Select where on the output to place the timestamp</li>
+                                <li>Deploy on multiple platforms</li>
+                                <li>Output same quality images as input</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Reads timestamp data from files that have it</li>
+                                <li>UI lets user select text position in the corners</li>
+                                <li>Executables are available for MacOS and Windows</li>
+                                <li>No reduction in image quality for output</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Language: Python</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: MacOS, Windows</li>
+                                <li>IDE: VS Code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="RockPaperScissors">
+                    <h3>Rock Paper Scissors</h3>
+                    <h5 class="project-date">December 2022</h5>
+                    <p>Project for the Foundations Course of the Odin Project. Developed basic interface to play Rock,
+                        Paper, Scissors using HTML, CSS, and JavaScript.</p>
+                    <div class="project-links">
+                        <h4>Links:</h4>
+                        <a href="https://jestoncolelewis.github.io/rockPaperScissors/">Live</a>
+                        <a href="https://github.com/jestoncolelewis/rockPaperScissors">Repo</a>
+                    </div>
+                    <div class="goal-tech">
+                        <div class="goals">
+                            <h4>Goals</h4>
+                            <ul>
+                                <li>Use external script</li>
+                                <li>Build custom non-player character</li>
+                                <li>Get player input</li>
+                                <li>Display scores</li>
+                            </ul>
+                        </div>
+                        <div class="outcomes">
+                            <h4>Outcomes</h4>
+                            <ul>
+                                <li>Uses external script for logic</li>
+                                <li>Utilizes custom coded NPC</li>
+                                <li>Player chooses their own move</li>
+                                <li>Scores update after every round</li>
+                            </ul>
+                        </div>
+                        <div class="tech">
+                            <h4>Technologies</h4>
+                            <ul>
+                                <li>Languages: HTML, CSS, JavaScript</li>
+                                <li>Frameworks: None</li>
+                                <li>OS: Web</li>
+                                <li>IDE: VS Code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="education">
+                <h2>Education</h2>
+                <h3>Western Governors University</h3>
+                <div id="date-degree">
+                    <h4>B.S. in Computer Science</h4>
+                    <h4>November 2022 - September 2024</h4>
+                </div>
+                <!-- TODO: add description -->
+            </div>
+            <div id="certificates">
+                <h2>Certificates</h2>
+
+                <h3>Linux Essentials</h3>
+                <!-- TODO: add description -->
+
+                <h3>CompTIA Project+</h3>
+                <!-- TODO: add description -->
+
+                <h3>ITIL 4 Foundations</h3>
+                <!-- TODO: add description -->
+            </div>
+            <div id="work-experience">
+                <h2>Work Experience</h2>
+                <div id="AVTech">
+                    <h3>AV Technician</h3>
+                    <h4>Freelance</h4>
+                    <h5>July 2021 - December 2023</h5>
+                    <h4>Role & Responsibilities</h4>
+                    <!-- TODO: add description -->
                     <ul>
-                        <li>Certificate</li>
-                        <li>Certificate</li>
-                        <li>Certificate</li>
+                        <li>Collaborated with clients to ensure seamless operation of digital sound and video equipment
+                            (e.g., Yamaha QL1, Shure wireless microphones, BlackMagic switchers) across numerous events,
+                            enhancing client satisfaction and event success.</li>
+                        <li>Diagnosed and resolved technical issues during events, optimizing audiovisual systems to
+                            ensure uninterrupted service and improve client satisfaction.</li>
                     </ul>
-                </div> -->
+                </div>
+
+                <div id="ManagingDirector">
+                    <h3>Managing Director</h3>
+                    <h4>Argos Productions</h4>
+                    <h5>July 2017 - June 2022</h5>
+                    <h4>Role & Responsibilities</h4>
+                    <!-- TODO: add description -->
+                    <ul>
+                        <li>Integrated video production systems in over 40 events using Canon cameras, DaVinci Resolve,
+                            and vMix, resulting in positive client feedback for sound and visual quality.</li>
+                        <li>Enhanced streaming workflows utilizing vMix and AWS services, contributing to consistent
+                            99.9% uptime for live and recorded content across various platforms.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>Copyright &copy; Jeston Lewis Creative, LLC 2022</p>
+        <p>Copyright &copy; Jeston Lewis, 2024</p>
     </footer>
 </body>
 
