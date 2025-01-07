@@ -15,5 +15,29 @@ fetch(url)
     count_element.style.textAlign = 'center';
     footer.append(count_title);
     footer.append(count_element);
-    console.log(data);
 });
+
+// show 5 projects
+const projects = document.querySelectorAll('.project');
+const more = document.getElementById('more');
+let num_clicks = 1;
+function show_posts(to_show) {
+    if (to_show > projects.length)  {
+        to_show = projects.length;
+        more.hidden = true;
+    }
+    for (let i = 0; i < to_show; i++) {
+        const project = projects[i];
+        if (project.hidden === true)
+        {
+            project.hidden = false;
+        }
+    }
+}
+function show_next() {
+    num_clicks++;
+    show_posts(num_clicks * 5);
+}
+
+show_posts(5);
+more.addEventListener('click', show_next);

@@ -94,6 +94,12 @@ a {
     justify-content: space-between;
 }
 
+#more {
+    border: none;
+    background: none;
+    font-size: 0.8em;
+}
+
 /* Responsiveness */
 
 @media screen and (min-width: 900px) {
