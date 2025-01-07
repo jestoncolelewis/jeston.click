@@ -8,4 +8,4 @@ This is a basic portfolio website for [Jeston Lewis](https://linkedin.com/in/jes
  - Lambda
  - DynamoDB
 
-The deployment is handled by Pulumi
+The infrastructure and deployment are handled by Terraform.
