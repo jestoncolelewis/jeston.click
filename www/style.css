@@ -94,6 +94,26 @@ a {
     justify-content: space-between;
 }
 
+#certificates > h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cert-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cert-details > h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details-left {
+    text-align: right;
+}
+
 #more {
     border: none;
     background: none;
