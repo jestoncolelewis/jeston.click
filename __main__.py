@@ -277,7 +277,7 @@ apigw = aws.apigatewayv2.Api(
         allow_credentials=False,
         allow_headers=["*"],
         allow_methods=["*"],
-        allow_origins=["*"],
+        allow_origins=["https://jeston.click", "https://www.jeston.click"],
         max_age=300
     )
 )
