@@ -1,8 +1,31 @@
+# Python
 *.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
 /venv/
+.venv/
+.env
+
+# IDEs
 /.idea/
-/__pychache__
-/.vscode
+/.vscode/
+*.swp
+*.swo
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Build artifacts
 *.zip
+
+# Project specific
 records.py

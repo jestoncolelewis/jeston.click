@@ -2,7 +2,8 @@
 const footer = document.querySelector('footer');
 const count_element = document.createElement('p');
 const count_title = document.createElement('p')
-const url = 'https://rogn9gsh2e.execute-api.us-east-1.amazonaws.com/prod/jestonclick-page-count-31ee36e'
+// Railway API endpoint - update this after deployment
+const url = 'https://your-railway-app.railway.app/page-count'
 
 // get page count from db
 fetch(url)
