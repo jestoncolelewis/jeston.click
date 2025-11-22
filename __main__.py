@@ -266,7 +266,7 @@ page_count = aws.lambda_.Function(
     code=pulumi.FileArchive("lambda_count_payload.zip"),
     role=iam_for_lambda.arn,
     handler="page_count.handler",
-    runtime="python3.9"
+    runtime="python3.13"
 )
 
 # Create api
