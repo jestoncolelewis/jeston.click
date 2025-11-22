@@ -3,4 +3,5 @@ runtime:
   name: python
   options:
     virtualenv: venv
+    version: "3.13"
 description: portfolio website
